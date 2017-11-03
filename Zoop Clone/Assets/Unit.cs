@@ -13,9 +13,14 @@ public class Unit : MonoBehaviour {
 
     void Start () {
 		
+		MoveToNode(section.ReturnEmptyNode());
+
 	}
 
-
+	void MoveToNode (Node node) {
+		transform.position = node.transform.position;
+		node.SetCurrentUnit(this);
+	}
 
 
 

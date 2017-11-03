@@ -5,7 +5,7 @@ using System;
 
 public class UnitManager : MonoBehaviour {
 
-	List<Unit> units;
+	[SerializeField] List<Unit> units;
 	public Level level;
 
 	Material defaultMaterial;
@@ -27,14 +27,15 @@ public class UnitManager : MonoBehaviour {
 		Section newSection = level.sections[newSectionIndex];
 
 		GameObject newUnit = new GameObject("Unit " + units.Count);
+		
 		MeshFilter meshFilter = newUnit.AddComponent<MeshFilter>();
 		meshFilter.mesh = GetMeshFromPrimitive(PrimitiveType.Sphere);
 		MeshRenderer meshRenderer = newUnit.AddComponent<MeshRenderer>();
 		meshRenderer.sharedMaterial = defaultMaterial;
 
 		units.Add(newUnit.AddComponent<Unit>());
-		Unit unit = newUnit.GetComponent<Unit>();
-		unit.section = newSection;
+		
+		units[units.Count].section = newSection;
 		//newUnit.transform.position = level.sections[newSectionIndex].ReturnEmptySpot();
 		
 	}

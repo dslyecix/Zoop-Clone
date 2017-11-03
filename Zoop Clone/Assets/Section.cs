@@ -31,6 +31,7 @@ public class Section : MonoBehaviour {
         UpdatePositionAndRotation();
         UpdateNodePositionAndRotation();
         
+        DrawDebugLines();
     }
 
     private void UpdateNodePositionAndRotation()
@@ -71,20 +72,20 @@ public class Section : MonoBehaviour {
 
         for (int i = 1; i < numberOfTiers; i++)
         {
-            Debug.DrawLine(nodes[i - 1].transform.position, nodes[i].transform.position, new Color((1 - 0.1f * i),(0.1f * i),0,1));
+            Debug.DrawLine(nodes[i - 1].transform.position, nodes[i].transform.position, new Color((1 - 0.1f * i), (0.2f * i), 1 - (0.2f * i), 1));
         }
     }
 
-    // public Vector3 ReturnEmptyNode () {
-	// 	for (int i = 0; i < tiers; i++)
-	// 	{
-	// 		if (nodes[i].isEmpty) {
-	// 			nodes[i].isEmpty = false;
-	// 			return nodes[i].transform.position;
-	// 		}
-	// 	}
-	// 	return Vector3.zero;
-	// }
+    public Node ReturnEmptyNode () {
+		for (int i = 0; i < numberOfTiers; i++)
+		{
+			if (nodes[i].isEmpty) {
+				nodes[i].isEmpty = false;
+				return nodes[i];
+			}
+		}
+		return null;
+	}
 
     public void SetSectionTarget (Transform target) {
         sectionTarget = target;
