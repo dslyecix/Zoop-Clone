@@ -35,12 +35,12 @@ public class UnitManager : MonoBehaviour {
 		units.Add(newUnit.AddComponent<Unit>());
 		Unit unit = newUnit.GetComponent<Unit>();
 		unit.section = newSection;
-		newUnit.transform.position = level.sections[newSectionIndex].ReturnEmptySpot();
+		//newUnit.transform.position = level.sections[newSectionIndex].ReturnEmptySpot();
 		
 	}
 
 	int GetRandomSectionIndex () {
-		return UnityEngine.Random.Range(0,level.sections.Count);
+		return UnityEngine.Random.Range(0,level.sections.Length);
 	}
 
 	ColorType GetNewColorType () {

@@ -197,47 +197,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1699174407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1699174409}
-  - component: {fileID: 1699174408}
-  m_Layer: 0
-  m_Name: UnitManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1699174408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1699174407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd8da65e37f1dce4d8b9bd4886b37b71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: {fileID: 1704681757}
---- !u!4 &1699174409
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1699174407}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1704681756
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,8 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d148f37295d7f94192709b08d871492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfSections: 6
-  debugMaterial: {fileID: 2100000, guid: 25df1ce30a9ac0d4084c0da3dc00e684, type: 2}
+  numberOfSections: 5
+  sections: []
+  numberOfTiers: 5
+  sectionLength: 10
 --- !u!4 &1704681758
 Transform:
   m_ObjectHideFlags: 0

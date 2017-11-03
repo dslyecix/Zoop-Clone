@@ -5,56 +5,101 @@ using UnityEngine;
 
 public class Section : MonoBehaviour {
 
-	int tiers = 6;
-	float length = 18f;
+    Transform sectionTarget;
+    Transform centerTarget;
+
+	int numberOfTiers;
+
+    public float length;
+
 	float tierDist;
 
-	Vector3 parentDirection;
 
-	List<Spot> spots = new List<Spot>();
+	Node[] nodes;
 
-    void Awake ()
+    void Start ()
     {
-        tierDist = length / tiers;
-        parentDirection = (transform.parent.transform.position - transform.position).normalized;
-        CreateSpots();
+        nodes = new Node[numberOfTiers];
+        tierDist = length / numberOfTiers;
+
+        CreateNodes();
     }
 
     void Update () 
 	{
-		for (int i = 0; i < spots.Count; i++)
+		
+        UpdatePositionAndRotation();
+        UpdateNodePositionAndRotation();
+        
+    }
+
+    private void UpdateNodePositionAndRotation()
+    {
+        for (int i = 0; i < nodes.Length; i++)
         {
-            UpdatePositions(i);
-            Debug.DrawLine(this.transform.position, spots[i].transform.position, Color.blue);
+            nodes[i].transform.position = this.transform.position + i * tierDist * -transform.forward;
+            nodes[i].transform.rotation = this.transform.rotation;
+        }
+        
+    
+    }
+
+    private void UpdatePositionAndRotation()
+    {
+        if (sectionTarget != null) {
+            transform.position = sectionTarget.transform.position;
+            transform.rotation = Quaternion.LookRotation(centerTarget.position - this.transform.position, Vector3.up);
+        } else {
+            Debug.Log("Section " + name + " has no target to follow!");
         }
     }
 
-    private void CreateSpots()
+    private void CreateNodes()
     {
-        for (int i = 0; i < tiers; i++)
+        for (int i = 0; i < numberOfTiers; i++)
         {
-            GameObject GO = new GameObject("Spot " + i);
-            GO.transform.position = this.transform.position + i * tierDist * -parentDirection;
+            GameObject GO = new GameObject("Node " + i);
+            GO.transform.position = this.transform.position + i * tierDist * -transform.forward;
             GO.transform.parent = this.transform;
-			spots.Add(GO.AddComponent<Spot>());
+    		nodes[i] = GO.AddComponent<Node>();
         }
     }
-   
-    private void UpdatePositions(int i)
+
+    private void DrawDebugLines()
     {
-        parentDirection = (transform.parent.transform.position - transform.position).normalized;
-        spots[i].transform.position = this.transform.position + i * tierDist * -parentDirection;
+        Debug.DrawLine(this.transform.position, nodes[0].transform.position, Color.blue);
+
+        for (int i = 1; i < numberOfTiers; i++)
+        {
+            Debug.DrawLine(nodes[i - 1].transform.position, nodes[i].transform.position, new Color((1 - 0.1f * i),(0.1f * i),0,1));
+        }
     }
 
-	public Vector3 ReturnEmptySpot () {
-		for (int i = 0; i < tiers; i++)
-		{
-			if (spots[i].isEmpty) {
-				spots[i].isEmpty = false;
-				return spots[i].transform.position;
-			}
-		}
-		return Vector3.zero;
-	}
+    // public Vector3 ReturnEmptyNode () {
+	// 	for (int i = 0; i < tiers; i++)
+	// 	{
+	// 		if (nodes[i].isEmpty) {
+	// 			nodes[i].isEmpty = false;
+	// 			return nodes[i].transform.position;
+	// 		}
+	// 	}
+	// 	return Vector3.zero;
+	// }
+
+    public void SetSectionTarget (Transform target) {
+        sectionTarget = target;
+    }
+
+    public void SetSectionLength (float _length) {
+        length = _length;
+    }
+
+    public void SetCenterTarget (Transform parent) {
+        centerTarget = parent;
+    }
+
+    public void SetTiers (int tierNumber) {
+        numberOfTiers = tierNumber;
+    }
 
 }
