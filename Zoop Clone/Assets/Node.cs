@@ -7,9 +7,15 @@ public class Node : MonoBehaviour {
 	public bool isEmpty = true;
 	Unit currentUnit;
 
-	public void SetCurrentUnit (Unit unit) {
+    public void SetCurrentUnit (Unit unit) {
 		currentUnit = unit;
+		isEmpty = false;
 
+	}
+
+	public void ClearCurrentUnit() {
+		currentUnit = null;
+		isEmpty = true;
 	}
 
 }

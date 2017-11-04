@@ -33,10 +33,12 @@ public class UnitManager : MonoBehaviour {
 		MeshRenderer meshRenderer = newUnit.AddComponent<MeshRenderer>();
 		meshRenderer.sharedMaterial = defaultMaterial;
 
-		units.Add(newUnit.AddComponent<Unit>());
+		Unit tempUnit = newUnit.AddComponent<Unit>();
+		tempUnit.SetSection(newSection);
+		units.Add(tempUnit);
 		
-		units[units.Count].section = newSection;
-		//newUnit.transform.position = level.sections[newSectionIndex].ReturnEmptySpot();
+		
+		//newUnit.transform.position = level.sections[newSectionIndex].ReturnNextEmptyNode();
 		
 	}
 

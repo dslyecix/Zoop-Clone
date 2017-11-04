@@ -47,7 +47,7 @@ public class Section : MonoBehaviour {
 
     private void UpdatePositionAndRotation()
     {
-        if (sectionTarget != null) {
+        if (sectionTarget) {
             transform.position = sectionTarget.transform.position;
             transform.rotation = Quaternion.LookRotation(centerTarget.position - this.transform.position, Vector3.up);
         } else {
@@ -76,11 +76,11 @@ public class Section : MonoBehaviour {
         }
     }
 
-    public Node ReturnEmptyNode () {
+    public Node ReturnNextEmptyNode () {
 		for (int i = 0; i < numberOfTiers; i++)
 		{
 			if (nodes[i].isEmpty) {
-				nodes[i].isEmpty = false;
+				// nodes[i].isEmpty = false;
 				return nodes[i];
 			}
 		}

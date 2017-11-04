@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 1382673984}
   - component: {fileID: 1382673983}
   m_Layer: 0
-  m_Name: UnitManager
+  m_Name: _UnitManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,7 +251,7 @@ GameObject:
   m_Layer: 0
   m_Name: _Level
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -266,10 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d148f37295d7f94192709b08d871492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfSections: 5
+  numberOfSections: 6
   sections: []
-  numberOfTiers: 5
-  sectionLength: 10
+  numberOfTiers: 7
+  sectionLength: 20
 --- !u!4 &1704681758
 Transform:
   m_ObjectHideFlags: 0
