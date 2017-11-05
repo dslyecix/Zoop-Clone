@@ -16,22 +16,20 @@ public class Unit : MonoBehaviour {
 
 
     void Start () {
-
-		GetNewNode();
 		//Debug.Log("Your section is " + section.name);
-		MoveToNode(currentNode);
+		if (currentNode) MoveToNode(currentNode);
 
 	}
 
     void Update () {
-		if(currentNode) MoveToNode(currentNode);
+		if (currentNode) MoveToNode(currentNode);
 	}
 
-    private void GetNewNode()
+    public void GetNewNode()
     {
-		if(currentNode) currentNode.ClearCurrentUnit();
+		if (currentNode) currentNode.ClearCurrentUnit();
         currentNode = section.ReturnNextEmptyNode();
-		currentNode.SetCurrentUnit(this);
+		if (currentNode) currentNode.SetCurrentUnit(this);
     }
 
 	public void MoveToNode (Node node) {
@@ -41,5 +39,11 @@ public class Unit : MonoBehaviour {
 	public void SetSection (Section _section) {
 		section = _section;
 	}
+
+	public void UpdateType (ColorType _type) {
+		type = _type;
+	}
+
+	
 
 }

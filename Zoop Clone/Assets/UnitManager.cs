@@ -22,7 +22,7 @@ public class UnitManager : MonoBehaviour {
 
 	void CreateNewUnit () {
 
-		ColorType newColorType = GetNewColorType();
+		ColorType newColorType = GetRandomColorType();
 		int newSectionIndex = GetRandomSectionIndex();
 		Section newSection = level.sections[newSectionIndex];
 
@@ -35,6 +35,7 @@ public class UnitManager : MonoBehaviour {
 
 		Unit tempUnit = newUnit.AddComponent<Unit>();
 		tempUnit.SetSection(newSection);
+		tempUnit.GetNewNode();
 		units.Add(tempUnit);
 		
 		
@@ -46,7 +47,7 @@ public class UnitManager : MonoBehaviour {
 		return UnityEngine.Random.Range(0,level.sections.Length);
 	}
 
-	ColorType GetNewColorType () {
+	ColorType GetRandomColorType () {
 		int length = Enum.GetNames(typeof(ColorType)).Length;
 		return (ColorType)UnityEngine.Random.Range(0,length);
 	}
